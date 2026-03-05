@@ -9,3 +9,8 @@ stripe:
   enabled: true
   supported-currencies: USD,NGN,CAD
 payment-gateway: paypal
+email:
+  host: ${EMAIL_HOST}
+  name: owolabi.fawemimo@interswitchng.com
+  port: 8080
+  ssl: true
