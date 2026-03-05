@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: training
+app:
+  page-size: 10
+stripe:
+  apiURL: https://api.stripe.com
+  timeout: 1000
+  enabled: true
+  supported-currencies: USD,NGN,CAD
+
