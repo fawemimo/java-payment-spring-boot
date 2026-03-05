@@ -1,6 +1,7 @@
 package com.store;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
 //@Component
 public class OrderService {
@@ -18,6 +19,11 @@ public class OrderService {
     @PostConstruct
     public void init() {
         System.out.println("Orderservice post cpntructor");
+    }
+
+    @PreDestroy
+    public void cleanup() {
+        System.out.println("Orderservice cleanup");
     }
 
     public void setPaymentService(PaymentService paymentService) {
