@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-@Service("email")
+@Service()
 @Primary
 public class EmailNotificationProviderService implements NotificationInterface {
 
