@@ -2,11 +2,15 @@ spring:
   application:
     name: training
   datasource:
-    url: jdbc:mysql://localhost:3306/store?DatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/store_template?DatabaseIfNotExist=true
     username: root
     password: SUNday@247
-  flyway:
-    baseline-on-migrate: true
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#  flyway:
+#    baseline-on-migrate: true
+
 app:
   page-size: 10
 stripe:

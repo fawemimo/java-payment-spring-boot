@@ -28,6 +28,9 @@ public class User {
     @Column(nullable = false, name = "email")
     private String email;
 
+    @Column(name="state")
+    private String state;
+
     @Column(nullable = false, name = "password")
     private String password;
 
@@ -37,13 +40,28 @@ public class User {
     private List<Address> addresses = new ArrayList<>();
 
 //    Many To Many Relationship
-    @ManyToMany(mappedBy = "tags")
+    @ManyToMany
     @JoinTable(
             name = "user_tags",
             joinColumns = @JoinColumn(name="user_id"),
             inverseJoinColumns = @JoinColumn(name="tag_id")
     )
+    @Builder.Default
     private Set<Tag> tags = new HashSet<>();
+
+//    One To One Relationship
+    @OneToOne(mappedBy = "user")
+    private Profile profile;
+
+//    Many To Many to products
+    @ManyToMany
+    @JoinTable(
+            name="wishlist",
+            joinColumns = @JoinColumn(name="user_id"),
+            inverseJoinColumns = @JoinColumn(name="product_id")
+    )
+    private Set<Product> wishlist = new HashSet<>();
+
 
     public void addAddress(Address address){
         addresses.add(address);
@@ -53,5 +71,15 @@ public class User {
     public void removeAddress(Address address){
         addresses.remove(address);
         address.setUser(null);
+    }
+
+    public void addTag(String tagName){
+        var tag = new Tag(tagName);
+        tags.add(tag);
+        tag.getUsers().add(this);
+    }
+
+    public void removeTag(String tagName){
+        tags.remove(new Tag(tagName));
     }
 }
